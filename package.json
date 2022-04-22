@@ -14,8 +14,12 @@
   },
   "homepage": "https://github.com/scurtoni/rickandmorty-sample-app#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.26.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
+    "redux-saga": "^1.1.3"
   },
   "devDependencies": {
     "@types/node": "^17.0.25",
