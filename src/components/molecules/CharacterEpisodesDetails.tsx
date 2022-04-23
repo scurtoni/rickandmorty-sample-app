@@ -12,7 +12,7 @@ const CharacterEpisodesDetails: FC<Props> = (props) => {
   return (
     <>
       {episodes.map((episode) => (
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" key={episode.id}>
           episode name: {episode.name} {episode.air_date} {episode.name}
         </Typography>
       ))}

@@ -9,13 +9,10 @@ const LOCATION_BASEURL = "https://rickandmortyapi.com/api/location/";
 const EPISODE_BASEURL = "https://rickandmortyapi.com/api/episode/";
 
 /**
- * TODO: I don't know why but any type other than `any` won't work in the takeEvery below.
- *
  * @param action - This action should contain a payload of type {import('models').TravelsParams}
  */
 function* updateSearch(action: any) {
   try {
-    //const currentResults = (yield select((state: models.ApplicationState) => state.search.result)) as models.SearchResults;
     const page: number = action.payload.page;
 
     const searchResults: models.CharacterSearchState = yield call(api.characterSearch, page);
@@ -26,7 +23,6 @@ function* updateSearch(action: any) {
 
 function* updateDetails(action: any) {
   try {
-    //const currentResults = (yield select((state: models.ApplicationState) => state.search.result)) as models.SearchResults;
     const character: models.Character = action.payload.character;
 
     const locationId = character.location.url?.replace(LOCATION_BASEURL, "");

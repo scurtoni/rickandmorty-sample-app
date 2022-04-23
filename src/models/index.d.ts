@@ -1,3 +1,7 @@
+export type Location = {};
+
+export type Episode = {};
+
 export type CharacterOrigin = {
   name: string;
   url: string;

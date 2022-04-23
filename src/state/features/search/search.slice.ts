@@ -20,7 +20,6 @@ export default createSlice({
       state.info = action.payload.info;
     },
     updateDetails: (state, action: PayloadAction<any>) => {
-      console.info("save details", action.payload.details);
       state.details = action.payload;
     }
   }
