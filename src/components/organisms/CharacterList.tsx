@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { SearchActionTypes } from "./../../state/common.types";
 import { ApplicationState, Character } from "./../../models";
 
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+
 import CharacterCard from "./../molecules/CharacterCard";
 
 type Props = {};
@@ -11,7 +15,7 @@ type Props = {};
 const CharacterList: FC<Props> = () => {
   const dispatch = useDispatch();
 
-  const { results, info, page } = useSelector((state: ApplicationState) => state.characterSearch);
+  const { results, info, page, details } = useSelector((state: ApplicationState) => state.characterSearch);
 
   useEffect(() => {
     dispatch({
@@ -23,11 +27,13 @@ const CharacterList: FC<Props> = () => {
   }, []);
 
   return (
-    <div>
+    <Grid container spacing={2}>
       {results.map((character: Character) => (
-        <CharacterCard character={character} />
+        <Grid item xs={12} md={6} lg={4} key={character.id}>
+          <CharacterCard character={character} details={details} />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 

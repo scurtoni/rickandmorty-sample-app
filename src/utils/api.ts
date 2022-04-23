@@ -16,6 +16,16 @@ const instance = {
     return api.get(`character?page=${page}`).then(({ data }) => {
       return data;
     });
+  },
+  episodeSearch: (ids: string): Promise<any> => {
+    return api.get(`episode/${ids}`).then(({ data }) => {
+      return data;
+    });
+  },
+  locationSearch: (id: string): Promise<any> => {
+    return api.get(`location/${id}`).then(({ data }) => {
+      return data;
+    });
   }
 };
 

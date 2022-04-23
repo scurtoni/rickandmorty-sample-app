@@ -7,7 +7,8 @@ const initialState: CharacterSearchState = {
     pages: 0,
     count: 0
   },
-  results: []
+  results: [],
+  details: {}
 };
 
 export default createSlice({
@@ -17,6 +18,10 @@ export default createSlice({
     updateCharacterResults: (state, action: PayloadAction<CharacterSearchState>) => {
       state.results = action.payload.results;
       state.info = action.payload.info;
+    },
+    updateDetails: (state, action: PayloadAction<any>) => {
+      console.info("save details", action.payload.details);
+      state.details = action.payload;
     }
   }
 });

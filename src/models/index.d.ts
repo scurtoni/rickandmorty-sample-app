@@ -40,6 +40,7 @@ export type CharacterSearchState = {
   results: CharacterSearchResults;
   info: CharacterSearchInfo;
   page: number;
+  details: {};
 };
 
 export type ApplicationState = {
