@@ -5,9 +5,8 @@ import { useDispatch } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
+import TextItem from "./../atoms/TextItem";
 import { DetailsActionTypes } from "./../../state/common.types";
 import CharacterLocationDetails from "./CharacterLocationDetails";
 import CharacterEpisodesDetails from "./CharacterEpisodesDetails";
@@ -38,9 +37,7 @@ const CharacterCard: FC<Props> = (props) => {
         {details?.location && character.id === details.id ? (
           <CharacterLocationDetails location={details?.location} />
         ) : (
-          <Typography variant="body2" color="text.secondary">
-            location: {character.location.name}
-          </Typography>
+          <TextItem variant="body2" color="text.secondary" label="location" text={character.location.name} />
         )}
         {details?.episodes && character.id === details.id && <CharacterEpisodesDetails episodes={details?.episodes} />}
 
