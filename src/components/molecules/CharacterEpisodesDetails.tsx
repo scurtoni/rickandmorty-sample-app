@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import TextItem from "./../atoms/TextItem";
 
 import Typography from "@mui/material/Typography";
 
@@ -12,9 +13,7 @@ const CharacterEpisodesDetails: FC<Props> = (props) => {
   return (
     <>
       {episodes.map((episode) => (
-        <Typography variant="body2" color="text.secondary" key={episode.id}>
-          episode name: {episode.name} {episode.air_date} {episode.name}
-        </Typography>
+        <TextItem variant="body2" color="text.secondary" key={episode.id} label="episode name:" text={`${episode.name} ${episode.air_date} ${episode.name}`} />
       ))}
     </>
   );
