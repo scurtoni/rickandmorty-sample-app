@@ -15,11 +15,11 @@ State Management
 
 Redux + Redux Toolkit + Redux Saga
 
-ToDo
+ToDo:
 
 - manage error and loading state
 - configure StoryBook
-- setup types for url and dates
+- setup webpack css and image loaders
 
-Bug
-Typescript paths is not working
+Bug:
+-Typescript paths is not working

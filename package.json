@@ -41,6 +41,7 @@
     "eslint-plugin-react-hooks": "^4.4.0",
     "fork-ts-checker-webpack-plugin": "^7.2.6",
     "html-webpack-plugin": "^5.5.0",
+    "lint-staged": "^12.4.0",
     "path": "^0.12.7",
     "prettier": "^2.6.2",
     "ts-loader": "^9.2.8",
@@ -53,11 +54,20 @@
     "dev": "webpack serve",
     "build": "webpack --mode production --config webpack.config.js",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
+    "lint-staged": "lint-staged"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix"
+      "pre-commit": "npm run lint-staged"
     }
+  },
+  "lint-staged": {
+    "**/assets/**/*.{js,ts,tsx}": [
+      "./node_modules/.bin/eslint --fix"
+    ],
+    "**/app_project/cartridge/**/*.{js,ts}": [
+      "./node_modules/.bin/eslint --fix"
+    ]
   }
 }
