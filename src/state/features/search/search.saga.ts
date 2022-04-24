@@ -31,9 +31,9 @@ function* updateDetails(action: any) {
       return result + "," + episodeUrl.replace(EPISODE_BASEURL, "");
     }, "");
 
-    const location: any = yield call(api.locationSearch, locationId);
+    const location: models.Location = yield call(api.locationSearch, locationId);
 
-    const episodes: any = yield call(api.episodeSearch, epdisodesId);
+    const episodes: models.Episode[] = yield call(api.episodeSearch, epdisodesId);
 
     yield put(
       searchSlice.actions.updateDetails({

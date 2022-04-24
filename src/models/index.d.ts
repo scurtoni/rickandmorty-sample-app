@@ -1,6 +1,22 @@
-export type Location = {};
+export type Location = {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: string[];
+  url: URL;
+  created: string;
+};
 
-export type Episode = {};
+export type Episode = {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url: string;
+  created: string;
+};
 
 export type CharacterOrigin = {
   name: string;
@@ -44,7 +60,11 @@ export type CharacterSearchState = {
   results: CharacterSearchResults;
   info: CharacterSearchInfo;
   page: number;
-  details: {};
+  details: {
+    episodes?: Episode[];
+    location?: Location;
+    id?: number;
+  };
 };
 
 export type ApplicationState = {
