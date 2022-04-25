@@ -24,7 +24,7 @@ Jest
 
 ToDo:
 
-- manage error and loading state
+- fix component tests
 - configure Storybook
 - setup webpack css, font and image loaders
 - webpack optimization setup
