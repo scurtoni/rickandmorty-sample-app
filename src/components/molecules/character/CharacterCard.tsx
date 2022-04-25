@@ -30,7 +30,7 @@ const CharacterCard: FC<Props> = (props) => {
   };
 
   return (
-    <Card>
+    <Card id="details">
       <CardMedia component="img" image={character.image} alt="green iguana" />
       <CardContent>
         <CharacterInfo character={character} />
