@@ -24,5 +24,4 @@
       "@models": ["./src/models"]
     }
   }
-  // "include": ["./src", "./webpack.config.ts", "webpack.config.js"]
 }

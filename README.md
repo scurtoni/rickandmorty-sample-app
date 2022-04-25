@@ -27,6 +27,7 @@ ToDo:
 - manage error and loading state
 - configure Storybook
 - setup webpack css, font and image loaders
+- webpack optimization setup
 
 Bug:
 -Typescript paths is not working

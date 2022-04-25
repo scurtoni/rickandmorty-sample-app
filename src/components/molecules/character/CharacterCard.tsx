@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import models from "./../../models";
+import models from "../../../models";
 import { useDispatch } from "react-redux";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import TextItem from "./../atoms/TextItem";
-import { DetailsActionTypes } from "./../../state/common.types";
+import TextItem from "../../atoms/TextItem";
+import { DetailsActionTypes } from "../../../state/common.types";
 import CharacterLocationDetails from "./CharacterLocationDetails";
 import CharacterEpisodesDetails from "./CharacterEpisodesDetails";
 import CharacterInfo from "./CharacterInfo";
@@ -15,10 +15,11 @@ import CharacterInfo from "./CharacterInfo";
 type Props = {
   character: models.Character;
   details?: any;
+  loadingId?: number;
 };
 
 const CharacterCard: FC<Props> = (props) => {
-  const { character, details } = props;
+  const { character, details, loadingId } = props;
   const dispatch = useDispatch();
 
   const getDetails = () => {
@@ -33,22 +34,27 @@ const CharacterCard: FC<Props> = (props) => {
       <CardMedia component="img" image={character.image} alt="green iguana" />
       <CardContent>
         <CharacterInfo character={character} />
-
-        {details?.location && character.id === details.id ? (
-          <CharacterLocationDetails location={details?.location} />
+        {loadingId ? (
+          <div>loading...</div>
         ) : (
-          <TextItem variant="body2" color="text.secondary" label="location" text={character.location.name} />
-        )}
-        {details?.episodes && character.id === details.id && <CharacterEpisodesDetails episodes={details?.episodes} />}
+          <>
+            {details?.location && character.id === details.id ? (
+              <CharacterLocationDetails location={details?.location} />
+            ) : (
+              <TextItem variant="body2" color="text.secondary" label="location" text={character.location.name} />
+            )}
+            {details?.episodes && character.id === details.id && <CharacterEpisodesDetails episodes={details?.episodes} />}
 
-        <Button
-          size="small"
-          onClick={() => {
-            getDetails();
-          }}
-        >
-          DETAILS
-        </Button>
+            <Button
+              size="small"
+              onClick={() => {
+                getDetails();
+              }}
+            >
+              DETAILS
+            </Button>
+          </>
+        )}
       </CardContent>
     </Card>
   );

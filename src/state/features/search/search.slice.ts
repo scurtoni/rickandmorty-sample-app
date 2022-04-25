@@ -8,7 +8,8 @@ const initialState: CharacterSearchState = {
     count: 0
   },
   results: [],
-  details: {}
+  details: {},
+  loadingId: 0
 };
 
 export default createSlice({
@@ -21,6 +22,10 @@ export default createSlice({
     },
     updateDetails: (state, action: PayloadAction<any>) => {
       state.details = action.payload;
+      state.loadingId = 0;
+    },
+    setLoading: (state, action: PayloadAction<any>) => {
+      state.loadingId = action.payload;
     }
   }
 });

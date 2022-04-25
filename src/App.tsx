@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 
 import configureStore from "./state";
 
-import CharacterList from "./components/organisms/CharacterList";
+import CharacterList from "./components/organisms/character/CharacterList";
 
 const store = configureStore();
 

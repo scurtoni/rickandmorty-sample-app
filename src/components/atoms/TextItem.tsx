@@ -12,7 +12,7 @@ type Props = {
 const Card: FC<Props> = (props) => {
   return (
     <Typography variant={props.variant} color={props.text}>
-      {props.label}: {props.text}
+      <span style={{ fontWeight: "bold" }}>{props.label}</span>: {props.text}
     </Typography>
   );
 };

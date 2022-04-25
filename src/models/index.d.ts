@@ -43,7 +43,10 @@ export type Character = {
   created: string;
 };
 
-export type CharacterSearchResults = Character[];
+export type CharacterSearchResults = {
+  results: Character[];
+  info: CharacterSearchInfo;
+};
 
 export type CharacterSearchInfo = {
   count: number;
@@ -57,9 +60,10 @@ export type ErrorState = {
 };
 
 export type CharacterSearchState = {
-  results: CharacterSearchResults;
+  results: Character[];
   info: CharacterSearchInfo;
   page: number;
+  loadingId?: number;
   details: {
     episodes?: Episode[];
     location?: Location;
@@ -67,6 +71,17 @@ export type CharacterSearchState = {
   };
 };
 
+export type Error = {
+  code: string;
+  text?: string;
+  id?: number;
+};
+
+export type ErrorsState = {
+  apiErrors: Error[];
+};
+
 export type ApplicationState = {
   characterSearch: CharacterSearchState;
+  error: ErrorsState;
 };

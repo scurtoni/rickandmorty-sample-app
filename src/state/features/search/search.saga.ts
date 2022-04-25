@@ -4,6 +4,7 @@ import { SearchActionTypes, DetailsActionTypes } from "./../../common.types";
 
 import models from "./../../../models";
 import searchSlice from "./search.slice";
+import { addApiError } from "./../error/error.slice";
 
 const LOCATION_BASEURL = "https://rickandmortyapi.com/api/location/";
 const EPISODE_BASEURL = "https://rickandmortyapi.com/api/episode/";
@@ -18,12 +19,16 @@ function* updateSearch(action: any) {
     const searchResults: models.CharacterSearchState = yield call(api.characterSearch, page);
 
     yield put(searchSlice.actions.updateCharacterResults(searchResults));
-  } catch (e) {}
+  } catch (e) {
+    yield put(addApiError({ code: "API", text: "API error" }));
+  }
 }
 
 function* updateDetails(action: any) {
+  const character: models.Character = action.payload.character;
+
   try {
-    const character: models.Character = action.payload.character;
+    yield put(searchSlice.actions.setLoading(character.id));
 
     const locationId = character.location.url?.replace(LOCATION_BASEURL, "");
 
@@ -42,7 +47,10 @@ function* updateDetails(action: any) {
         id: character.id
       })
     );
-  } catch (e) {}
+  } catch (e) {
+    yield put(addApiError({ code: "API", text: "API error", id: character.id }));
+    yield put(searchSlice.actions.setLoading(0));
+  }
 }
 
 /**
